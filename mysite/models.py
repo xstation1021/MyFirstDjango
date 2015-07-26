@@ -78,15 +78,6 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user_id', 'permission_id'),)
 
 
-class Categories(models.Model):
-    name = models.CharField(max_length=50, blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'categories'
-
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -132,56 +123,7 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Ingredients(models.Model):
-    name = models.CharField(max_length=500, blank=True, null=True)
-    quantity = models.IntegerField(blank=True, null=True)
-    measure = models.IntegerField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'ingredients'
 
 
-class Products(models.Model):
-    ingredient_id = models.IntegerField(blank=True, null=True)
-    name = models.CharField(max_length=500, blank=True, null=True)
-    brand = models.CharField(max_length=50, blank=True, null=True)
-    measure = models.CharField(max_length=50, blank=True, null=True)
-    unit_size = models.CharField(max_length=11, blank=True, null=True)
-    unit_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    category_id = models.IntegerField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'products'
 
 
-class RecipeIngredients(models.Model):
-    unit = models.IntegerField(blank=True, null=True)
-    ingredient_id = models.IntegerField(blank=True, null=True)
-    recipe_id = models.IntegerField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'recipe_ingredients'
-
-
-class Recipes(models.Model):
-    name = models.CharField(max_length=500, blank=True, null=True)
-    prep_time = models.CharField(max_length=50, blank=True, null=True)
-    cook_time = models.CharField(max_length=50, blank=True, null=True)
-    serving_size = models.CharField(max_length=50, blank=True, null=True)
-    instructions = models.TextField(blank=True, null=True)
-    code = models.CharField(max_length=50, blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'recipes'
